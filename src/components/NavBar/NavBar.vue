@@ -11,27 +11,19 @@
         alt="logo"
       />
       <nav id="menu">
-        <li class="drop">
-          <a v-on:click="display_drop_menu()">
-            Menu 2 dropdown
-            <i class="icon-arrow"></i>
-          </a>
-          <ul class="drop_menu">
-            <a>Sub menu 1</a>
-            <a>Sub menu 2</a>
-            <a>Sub menu 3</a>
-          </ul>
-        </li>
-        <li class="drop">
-          <a v-on:click="display_drop_menu()">
-            Menu 3 dropdown
-            <i class="icon-arrow"></i>
-          </a>
-          <ul class="drop_menu">
-            <a>Sub menu 1</a>
-            <a>Sub menu 2</a>
-            <a>Sub menu 3</a>
-          </ul>
+        <li class="drop" v-for="link in links" :key="link.text">
+          <div v-if="link.sub_menu ===false">
+            <router-link :to="link.route">{{link.text}}</router-link>
+          </div>
+          <div v-else>
+            <a v-on:click="display_drop_menu()">
+              {{link.text}}
+              <i class="icon-arrow"></i>
+            </a>
+            <ul class="drop_menu">
+              <a v-for="child in link.route" :key="child.id">{{child.text}}</a>
+            </ul>
+          </div>
         </li>
       </nav>
     </div>
@@ -47,9 +39,36 @@ export default {
   data() {
     return {
       links: [
-        { icon: "dashboard", text: "Home", route: "/" },
-        { icon: "supervisor_account", text: "About", route: "/about" },
-        { icon: "supervisor_account", text: "My Category", route: "/Category" }
+        { icon: "dashboard", text: "Home", route: "/", sub_menu: false },
+        {
+          icon: "supervisor_account",
+          text: "About",
+          route: "/about",
+          sub_menu: false
+        },
+        {
+          icon: "supervisor_account",
+          text: "Eat Out",
+          route: [
+            {
+              id: "1",
+              text: "Restaurants",
+              subRoute: ""
+            },
+            {
+              id: "2",
+              text: "Cafes"
+            },
+            {
+              id: "3",
+              text: "Bars"
+            }
+          ],
+          sub_menu: true
+        },
+        {
+          icon: "dashboard", text: "Good Food Guide", route: "/", sub_menu: false
+        }
       ],
       menu: [
         { icon: "person", text: "profile", route: "/profile" },
@@ -83,7 +102,8 @@ export default {
         ? drop_menu.classList.add("display")
         : drop_menu.classList.remove("display");
       if (window.innerWidth < 660 && drop_menu.classList.contains("display")) {
-        event.target.parentElement.nextSibling.style.marginTop = drop_menu.clientHeight + "px";
+        event.target.parentElement.nextSibling.style.marginTop =
+          drop_menu.clientHeight + "px";
       }
     }
   }

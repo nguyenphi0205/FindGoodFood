@@ -1,4 +1,4 @@
-window.addEventListener("resize", function (event) {
+window.addEventListener("resize", function () {
     close_all_menu();
     document.getElementsByTagName("body")[0].classList.remove("display_menu");
 });

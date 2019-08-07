@@ -2,8 +2,7 @@
   <div id="app">
     <NavBar></NavBar>
     <div id="background">
-      <h3>This menu is responsive, resized on.</h3>
-      <h3>The header is hide when scroll down and show when scroll up, try it !</h3>
+      <router-view></router-view>
     </div>
   </div>
 </template>
@@ -40,9 +39,7 @@ export default {
   components: {
     NavBar
   },
-  methods: {
-
-  }
+  methods: {}
 };
 </script>
 
