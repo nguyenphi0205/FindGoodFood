@@ -17,7 +17,7 @@
   width: 100vw;
   height: 200vh;
   padding: 5%;
-  background-color: @cblue;
+  background-color: @cwhite;
   h3 {
     margin: 0;
     margin-bottom: 1%;

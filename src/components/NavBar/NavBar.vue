@@ -67,8 +67,67 @@ export default {
           sub_menu: true
         },
         {
-          icon: "dashboard", text: "Good Food Guide", route: "/", sub_menu: false
-        }
+          icon: "dashboard",
+          text: "Good Food Guide",
+          route: "/",
+          sub_menu: false
+        },
+        {
+          icon: "dashboard",
+          text: "Recipes",
+          route: [
+            {
+              id: "1",
+              text: "Recipe Collection",
+              subRoute: ""
+            },
+            {
+              id: "2",
+              text: "Weekly Meal Plan"
+            },
+            {
+              id: "3",
+              text: "Food News"
+            }
+          ],
+          sub_menu: true
+        },
+        {
+          icon: "dashboard",
+          text: "Drinks",
+          route: [
+            {
+              id: "1",
+              text: "Wine",
+              subRoute: ""
+            },
+            {
+              id: "2",
+              text: "Beer &  Cider"
+            },
+            {
+              id: "3",
+              text: "Cocktails & Spirits"
+            },
+            {
+              id: "4",
+              text: "Coffee"
+            }
+          ],
+          sub_menu: true
+        },
+        {
+          icon: "dashboard",
+          text: "Good Health",
+          route: "/",
+          sub_menu: false
+        },
+          {
+          icon: "dashboard",
+          text: "Video",
+          route: "/",
+          sub_menu: false
+        },
       ],
       menu: [
         { icon: "person", text: "profile", route: "/profile" },
