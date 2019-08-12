@@ -42,12 +42,6 @@ export default {
         { icon: "dashboard", text: "Home", route: "/", sub_menu: false },
         {
           icon: "supervisor_account",
-          text: "About",
-          route: "/about",
-          sub_menu: false
-        },
-        {
-          icon: "supervisor_account",
           text: "Eat Out",
           route: [
             {
@@ -62,7 +56,8 @@ export default {
             {
               id: "3",
               text: "Bars"
-            }
+            },
+            
           ],
           sub_menu: true
         },
