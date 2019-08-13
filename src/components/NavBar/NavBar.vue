@@ -13,7 +13,7 @@
       <nav id="menu">
         <li class="drop" v-for="link in links" :key="link.text">
           <div v-if="link.sub_menu ===false">
-            <router-link :to="link.route">{{link.text}}</router-link>
+            <router-link router :to="link.route">{{link.text}}</router-link>
           </div>
           <div v-else>
             <a v-on:click="display_drop_menu()">
@@ -21,7 +21,9 @@
               <i class="icon-arrow"></i>
             </a>
             <ul class="drop_menu">
-              <a v-for="child in link.route" :key="child.id">{{child.text}}</a>
+              <a v-for="child in link.route" :key="child.id">
+                <router-link router :to="child.subRoute">{{child.text}}</router-link>
+              </a>
             </ul>
           </div>
         </li>
@@ -47,17 +49,18 @@ export default {
             {
               id: "1",
               text: "Restaurants",
-              subRoute: ""
+              subRoute: "/eat-out/restaurant"
             },
             {
               id: "2",
-              text: "Cafes"
+              text: "Cafes",
+              subRoute: "/eat-out/cafe"
             },
             {
               id: "3",
-              text: "Bars"
-            },
-            
+              text: "Bars",
+              subRoute: "/eat-out/bar"
+            }
           ],
           sub_menu: true
         },
@@ -74,15 +77,17 @@ export default {
             {
               id: "1",
               text: "Recipe Collection",
-              subRoute: ""
+              subRoute: "/eat-out/restaurant"
             },
             {
               id: "2",
-              text: "Weekly Meal Plan"
+              text: "Weekly Meal Plan",
+              subRoute: "/eat-out/restaurant"
             },
             {
               id: "3",
-              text: "Food News"
+              text: "Food News",
+              subRoute: "/eat-out/restaurant"
             }
           ],
           sub_menu: true
@@ -94,19 +99,22 @@ export default {
             {
               id: "1",
               text: "Wine",
-              subRoute: ""
+              subRoute: "/eat-out/restaurant"
             },
             {
               id: "2",
-              text: "Beer &  Cider"
+              text: "Beer &  Cider",
+              subRoute: "/eat-out/restaurant"
             },
             {
               id: "3",
-              text: "Cocktails & Spirits"
+              text: "Cocktails & Spirits",
+              subRoute: "/eat-out/restaurant"
             },
             {
               id: "4",
-              text: "Coffee"
+              text: "Coffee",
+              subRoute: "/eat-out/restaurant"
             }
           ],
           sub_menu: true
@@ -117,12 +125,12 @@ export default {
           route: "/",
           sub_menu: false
         },
-          {
+        {
           icon: "dashboard",
           text: "Video",
           route: "/",
           sub_menu: false
-        },
+        }
       ],
       menu: [
         { icon: "person", text: "profile", route: "/profile" },
