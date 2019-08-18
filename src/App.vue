@@ -1,9 +1,10 @@
 <template>
   <div id="app">
     <NavBar></NavBar>
-    <div id="background">
-      <router-view></router-view>
-    </div>
+      <div id="background">
+        <router-view></router-view>
+      </div>
+   
   </div>
 </template>
 
@@ -12,6 +13,7 @@
 @cwhite : #ffffff;
 
 #background {
+
   content: "";
   display: block;
   width: 100vw;

@@ -28,6 +28,12 @@
           </div>
         </li>
       </nav>
+      <div>
+        <Login></Login>
+      </div>
+      <div>
+        <Register></Register>
+      </div>
     </div>
   </header>
 </template>
@@ -37,7 +43,13 @@
 </style>
 <script>
 import "./NavBarExtend.js";
+import Login from "../Login/login.vue";
+import Register from "../Register/register.vue";
 export default {
+  components: {
+    Login,
+    Register
+  },
   data() {
     return {
       links: [
@@ -49,17 +61,17 @@ export default {
             {
               id: "1",
               text: "Restaurants",
-              subRoute: "/eat-out/restaurant"
+              subRoute: "/eat-out/restaurants"
             },
             {
               id: "2",
               text: "Cafes",
-              subRoute: "/eat-out/cafe"
+              subRoute: "/eat-out/cafes"
             },
             {
               id: "3",
               text: "Bars",
-              subRoute: "/eat-out/bar"
+              subRoute: "/eat-out/bars"
             }
           ],
           sub_menu: true
@@ -67,7 +79,7 @@ export default {
         {
           icon: "dashboard",
           text: "Good Food Guide",
-          route: "/",
+          route: "/good-food-guides",
           sub_menu: false
         },
         {
@@ -131,10 +143,6 @@ export default {
           route: "/",
           sub_menu: false
         }
-      ],
-      menu: [
-        { icon: "person", text: "profile", route: "/profile" },
-        { icon: "exit_to_app", text: "Sign Out", route: "/SignOut" }
       ]
     };
   },
@@ -164,7 +172,8 @@ export default {
         ? drop_menu.classList.add("display")
         : drop_menu.classList.remove("display");
       if (window.innerWidth < 660 && drop_menu.classList.contains("display")) {
-        event.target.parentElement.nextSibling.style.marginTop =
+        console.log(event.target.parentElement.style.marginBottom);
+        event.target.parentElement.style.marginTop =
           drop_menu.clientHeight + "px";
       }
     }

@@ -1,34 +1,33 @@
 <template>
   <div class="blue-square-container">
-    <h1 class="title">{{this.$route.params.product}}</h1>
-    <div>search component</div>
+    <h1 class="title">{{this.$route.name}}</h1>
     <div class="container">
       <v-container grid-list-md>
         <v-layout wrap>
           <v-flex md8>
-            <h2 class="content-title">
-              <span>LATEST {{this.$route.params.product}}</span>
-            </h2>
-            <v-card
-              max-width="90%"
-              class="mx-auto"
-              v-for="post of visibleTodo"
-              v-bind:visibleTodo="visibleTodo"
-              v-bind:currentPage="currentPage"
-              v-bind:post="post"
-              :key="post.id"
-              style="margin-bottom: 20px"
-            >
-              <v-layout wrap>
-                <v-flex md4>
-                  <img :src="'https://i.imgur.com/J5to7xE.jpg'" height="100%" width="100%" />
-                </v-flex>
-                <v-flex md8>
-                  <v-card-title>{{post.title}}</v-card-title>
-                  <v-card-text>{{post.body}}</v-card-text>
-                </v-flex>
-              </v-layout>
-            </v-card>
+            <v-layout row>
+              <v-flex
+                md6
+                v-for="post of visibleTodo"
+                v-bind:visibleTodo="visibleTodo"
+                v-bind:currentPage="currentPage"
+                v-bind:post="post"
+                :key="post.id"
+              >
+                <v-card max-width="80%">
+                  <v-layout wrap>
+                    <v-flex md12>
+                      <img :src="'https://i.imgur.com/J5to7xE.jpg'" height="100%" width="100%" />
+                    </v-flex>
+                    <v-flex md12>
+                      <v-card-title>{{post.title}}</v-card-title>
+                      <v-card-text>{{post.body}}</v-card-text>
+                    </v-flex>
+                  </v-layout>
+                </v-card>
+              </v-flex>
+            </v-layout>
+
             <div class="text-center">
               <Pagination
                 v-bind:posts="posts"
@@ -101,19 +100,34 @@ export default {
       posts: [],
       errors: [],
       todos: [
-        { id: 0, text: "Make dinner tonight!" },
-        { id: 1, text: "Fold the laundry." },
-        { id: 2, text: "Learn to make a Vue app!" },
-        { id: 3, text: "Todo # 3" },
-        { id: 4, text: "Todo # 4" },
-        { id: 5, text: "Todo # 5" },
-        { id: 6, text: "Todo # 6" },
-        { id: 7, text: "Todo # 7" },
-        { id: 8, text: "Todo # 8" },
-        { id: 9, text: "Todo # 9" },
-        { id: 10, text: "Todo # 10" },
-        { id: 11, text: "Todo # 11" },
-        { id: 12, text: "Todo # 12" }
+        {
+          id: 0,
+          title: "hello world",
+          text: "Make dinner tonight!",
+          hotContent: true
+        },
+        {
+          id: 1,
+          title: "hello world",
+          text: "Fold the laundry.",
+          hotContent: false
+        },
+        {
+          id: 2,
+          title: "hello world",
+          text: "Learn to make a Vue app!",
+          hotContent: false
+        },
+        { id: 3, title: "hello world", text: "Todo # 3", hotContent: false },
+        { id: 4, title: "hello world", text: "Todo # 4", hotContent: false },
+        { id: 5, title: "hello world", text: "Todo # 5", hotContent: false },
+        { id: 6, title: "hello world", text: "Todo # 6", hotContent: false },
+        { id: 7, title: "hello world", text: "Todo # 7", hotContent: false },
+        { id: 8, title: "hello world", text: "Todo # 8", hotContent: false },
+        { id: 9, title: "hello world", text: "Todo # 9", hotContent: false },
+        { id: 10, title: "hello world", text: "Todo # 10", hotContent: false },
+        { id: 11, title: "hello world", text: "Todo # 11", hotContent: false },
+        { id: 12, title: "hello world", text: "Todo # 12", hotContent: false }
       ]
     };
   },
